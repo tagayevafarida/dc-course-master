@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MavenProjectsManager">
+    <option name="originalFiles">
+      <list>
+        <option value="$PROJECT_DIR$/dc-course-master/examples/WebClient/pom.xml" />
+        <option value="$PROJECT_DIR$/dc-course-master/examples/WebServer/pom.xml" />
+        <option value="$PROJECT_DIR$/dc-course-master/examples/ThreadSync/pom.xml" />
+        <option value="$PROJECT_DIR$/dc-course-master/examples/SyncExample/pom.xml" />
+        <option value="$PROJECT_DIR$/dc-course-master/examples/ThreadHello/pom.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17" default="true" project-jdk-name="corretto-17" project-jdk-type="JavaSDK" />
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
+  </component>
+</project>

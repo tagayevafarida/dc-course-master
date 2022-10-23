@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/dc-course-master/examples/SyncExample/SyncExample.iml" filepath="$PROJECT_DIR$/dc-course-master/examples/SyncExample/SyncExample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dc-course-master/examples/ThreadHello/ThreadHello.iml" filepath="$PROJECT_DIR$/dc-course-master/examples/ThreadHello/ThreadHello.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dc-course-master/examples/ThreadSync/ThreadSync.iml" filepath="$PROJECT_DIR$/dc-course-master/examples/ThreadSync/ThreadSync.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dc-course-master/examples/WebClient/WebClient.iml" filepath="$PROJECT_DIR$/dc-course-master/examples/WebClient/WebClient.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dc-course-master/examples/WebServer/WebServer.iml" filepath="$PROJECT_DIR$/dc-course-master/examples/WebServer/WebServer.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/dc-course-master.iml" filepath="$PROJECT_DIR$/.idea/dc-course-master.iml" />
+    </modules>
+  </component>
+</project>

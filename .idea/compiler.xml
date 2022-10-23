@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="SyncExample" />
+        <module name="WebClient" />
+        <module name="WebServer" />
+        <module name="ThreadSync" />
+        <module name="ThreadHello" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="SyncExample" target="17" />
+      <module name="ThreadHello" target="17" />
+      <module name="ThreadSync" target="17" />
+      <module name="WebClient" target="17" />
+      <module name="WebServer" target="17" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
