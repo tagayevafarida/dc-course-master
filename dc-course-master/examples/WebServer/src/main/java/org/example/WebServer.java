@@ -41,7 +41,9 @@ public class WebServer {
                     Processor proc = new Processor(socket, request);
                     proc.process(names);
                 } catch (IOException ex) {
-                    ex.printStackTrace();
+                    ex.printStackTrace();                   
+                }catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
             }
         }
