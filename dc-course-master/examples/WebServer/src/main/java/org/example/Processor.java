@@ -96,6 +96,7 @@ public class Processor {
             output.println("<head><title>Error</title></head>");
             output.println("<body><p>Hello, guy!<br>But there is no another pages!</p><br><br></body>");
             output.println("</html>");
+            Thread.sleep(6000);
             output.flush();
         }
         ThreadSafeQueue<String> queue = new ThreadSafeQueue<>();
