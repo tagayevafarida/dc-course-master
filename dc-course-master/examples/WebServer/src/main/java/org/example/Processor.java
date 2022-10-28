@@ -17,7 +17,7 @@ public class Processor {
         this.request = request;
     }
 
-    public void process(List<String> items) throws IOException {
+    public void process(List<Worker> items, String[] args) throws IOException, InterruptedException {
         // Print request that we received.
         System.out.println("Got request:");
         System.out.println(request.toString());
@@ -38,10 +38,10 @@ public class Processor {
                     "</body>");
             output.println("</html>");
             output.flush();
-            if(request.getRequestLine().indexOf("=") != -1){
+            if(request.getRequestLine().contains("=")){
                 String name = request.getRequestLine().substring(request.getRequestLine().indexOf("=") + 1, request.getRequestLine().indexOf("H") - 1);
                 System.out.println(name);
-                items.add(name);
+                items.add(new Worker(Integer.parseInt(name)));
                 System.out.println(items);
             }
         }
@@ -56,10 +56,10 @@ public class Processor {
                     "</body>");
             output.println("</html>");
             output.flush();
-            if(request.getRequestLine().indexOf("=") != -1){
-                String name = request.getRequestLine().substring(request.getRequestLine().indexOf("=") + 1, request.getRequestLine().indexOf("H") - 1);
-                System.out.println(name);
-                items.remove(name);
+            if(request.getRequestLine().contains("=")){
+                String id = request.getRequestLine().substring(request.getRequestLine().indexOf("=") + 1, request.getRequestLine().indexOf("H") - 1);
+                System.out.println(id);
+                items.remove(Integer.parseInt(id));
                 System.out.println(items);
             }
         }
@@ -77,7 +77,7 @@ public class Processor {
                         +
                         "</td>" +
                         "<td>" +
-                        items.get(i)
+                        items.get(i).toString()
                         +
                         "</td>" +
                         "</tr>");
@@ -85,6 +85,7 @@ public class Processor {
             output.println("</table><br><br>" +
                     "</body>");
             output.println("</html>");
+            Thread.sleep(6000);
             output.flush();
         }
         else{
@@ -97,6 +98,23 @@ public class Processor {
             output.println("</html>");
             output.flush();
         }
+        ThreadSafeQueue<String> queue = new ThreadSafeQueue<>();
+
+        int numOfThreads = (args.length > 1 ? Integer.parseInt(args[1]) : 12);
+
+        int numOfItems = items.size();
+
+        for (int i = 0; i < numOfThreads; i++) {
+            Consumer<String> cons = new Consumer<>(i, queue);
+            cons.start();
+        }
+        for (int i = 0; i < numOfItems; i++) {
+            queue.add(items.get(i).toString());
+        }
+        for (int i = 0; i < numOfThreads; i++) {
+            queue.add(null);
+        }
+
         System.out.println();
         socket.close();
     }
