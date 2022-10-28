@@ -16,7 +16,7 @@ public class WebServer {
         int port = args.length > 1 ? Integer.parseInt(args[1]) : 8080;
         // The maximum queue length for incoming connection
         int queueLength = args.length > 2 ? Integer.parseInt(args[2]) : 50;;
-        List<Worker> names = new ArrayList<>();
+        List<String> names = new ArrayList<String>();
         try (ServerSocket serverSocket = new ServerSocket(port, queueLength)) {
             System.out.println("Web Server is starting up, listening at port " + port + ".");
             System.out.println("You can access http://localhost:" + port + " now.");
@@ -39,7 +39,7 @@ public class WebServer {
 
                     // Process request
                     Processor proc = new Processor(socket, request);
-                    proc.process(names, args);
+                    proc.process(names);
                 } catch (IOException ex) {
                     ex.printStackTrace();                   
                 }catch (InterruptedException e) {
