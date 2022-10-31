@@ -108,7 +108,7 @@ public class Processor {
         for (int i = 0; i < numOfThreads; i++) {
             queue.add(null);
         }
-
+        System.out.println(queue);
         System.out.println();
         socket.close();
     }
