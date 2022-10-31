@@ -17,7 +17,7 @@ public class Processor {
         this.request = request;
     }
 
-    public void process(List<Worker> items, String[] args) throws IOException, InterruptedException {
+    public void process(ThreadSafeQueue<String> queue, List<Worker> items, int numOfThreads) throws IOException, InterruptedException {
         // Print request that we received.
         System.out.println("Got request:");
         System.out.println(request.toString());
@@ -99,16 +99,9 @@ public class Processor {
             Thread.sleep(6000);
             output.flush();
         }
-        ThreadSafeQueue<String> queue = new ThreadSafeQueue<>();
-
-        int numOfThreads = (args.length > 1 ? Integer.parseInt(args[1]) : 12);
 
         int numOfItems = items.size();
 
-        for (int i = 0; i < numOfThreads; i++) {
-            Consumer<String> cons = new Consumer<>(i, queue);
-            cons.start();
-        }
         for (int i = 0; i < numOfItems; i++) {
             queue.add(items.get(i).toString());
         }

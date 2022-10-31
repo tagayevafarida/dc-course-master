@@ -17,6 +17,13 @@ public class WebServer {
         // The maximum queue length for incoming connection
         int queueLength = args.length > 2 ? Integer.parseInt(args[2]) : 50;;
         List<Worker> names = new ArrayList<>();
+        ThreadSafeQueue<String> queue = new ThreadSafeQueue<>();
+        int numOfThreads = (args.length > 1 ? Integer.parseInt(args[1]) : 12);
+        Consumer<String> cons;
+        for (int i = 0; i < numOfThreads; i++) {
+            cons = new Consumer<>(1, queue);
+            cons.start();
+        }
         try (ServerSocket serverSocket = new ServerSocket(port, queueLength)) {
             System.out.println("Web Server is starting up, listening at port " + port + ".");
             System.out.println("You can access http://localhost:" + port + " now.");
@@ -39,7 +46,7 @@ public class WebServer {
 
                     // Process request
                     Processor proc = new Processor(socket, request);
-                    proc.process(names, args);
+                    proc.process(queue, names, numOfThreads);
                 } catch (IOException ex) {
                     ex.printStackTrace();                   
                 }catch (InterruptedException e) {
